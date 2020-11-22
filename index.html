@@ -1,27 +1,271 @@
----
+  
 
+<!DOCTYPE html>
 
----
+<html lang="en" >
 
+  
 
+<head>
 
+  
 
+<meta charset="UTF-8">
 
+<link rel="apple-touch-icon" type="image/png" href="[https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png](https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png)" />
 
+<meta name="apple-mobile-web-app-title" content="CodePen">
 
+  
 
+<link rel="shortcut icon" type="image/x-icon" href="[https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico](https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico)" />
+
+  
+
+<link rel="mask-icon" type="" href="[https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg](https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg)" color="#111" />
+
+  
+
+  
 
 <title>CodePen - A Pen by sakthiprasath</title>
 
+<style>
 
+#circle{
 
-<div id="circle">
-</div><img class="walking img-class" src="[https://i.pinimg.com/originals/47/03/09/4703093a70ba47001bf2c86319aae091.gif](https://i.pinimg.com/originals/47/03/09/4703093a70ba47001bf2c86319aae091.gif)">
-<img class="jogging img-class" src="[https://thumbs.gfycat.com/FeminineRealisticHoki-small.gif](https://thumbs.gfycat.com/FeminineRealisticHoki-small.gif)">
-<img class="running img-class" src="[https://i.pinimg.com/originals/48/18/5b/48185b5b7cfa936bfa17362fcaab6134.gif](https://i.pinimg.com/originals/48/18/5b/48185b5b7cfa936bfa17362fcaab6134.gif)">
+width:50px;
 
+height:50px;
 
+/* background:red; */
 
+padding:10px;
 
+border-radius: 50%;
 
+border: 2.5px solid black;
 
+position: absolute;
+
+top:10px;
+
+left:10px;
+
+transition-duration: 0.2s;
+
+}
+
+  
+
+.walking{
+
+width: 96%;
+
+height:96%;
+
+/* background: red; */
+
+display: block;
+
+border-radius: 50%;
+
+}
+
+  
+
+.jogging{
+
+width: 95%;
+
+height:95%;
+
+/* background: red; */
+
+display:none;
+
+border-radius: 50%;
+
+}
+
+  
+
+.running{
+
+width: 94%;
+
+height:94%;
+
+/* background: red; */
+
+display: none;
+
+border-radius: 32%;
+
+}
+
+.img-class{
+
+border: 1px solid red;
+
+}
+
+</style>
+
+  
+
+  
+
+</head>
+
+  
+
+<body translate="no" >
+
+<div id='circle'>
+
+<img class='walking img-class' src='[https://i.pinimg.com/originals/47/03/09/4703093a70ba47001bf2c86319aae091.gif](https://i.pinimg.com/originals/47/03/09/4703093a70ba47001bf2c86319aae091.gif)' />
+
+<img class='jogging img-class' src='[https://thumbs.gfycat.com/FeminineRealisticHoki-small.gif](https://thumbs.gfycat.com/FeminineRealisticHoki-small.gif)' />
+
+<img class='running img-class' src='[https://i.pinimg.com/originals/48/18/5b/48185b5b7cfa936bfa17362fcaab6134.gif](https://i.pinimg.com/originals/48/18/5b/48185b5b7cfa936bfa17362fcaab6134.gif)' />
+
+</div>
+
+<script src='[https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js](https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js)'></script>
+
+<script id="rendered-js" >
+
+var tm_1 ;
+
+var tm_2 ;
+
+var count = 30;
+
+var int_1
+
+function sakthi(){
+
+tm_1 = setTimeout(function(){
+
+$('.walking').hide();
+
+$('.jogging').hide();
+
+$('.jogging').show();
+
+tm_2 = setTimeout(function(){
+
+$('.jogging').hide();
+
+$('.running').show();
+
+}, 1500);
+
+}, 100);
+
+}
+
+  
+
+  
+
+function prasath(){
+
+clearTimeout(tm_1);
+
+clearTimeout(tm_2);
+
+setTimeout(function(){
+
+$('.jogging').hide();
+
+$('.running').hide();
+
+$('.walking').show();
+
+},100);
+
+}
+
+function mover(){
+
+setTimeout(function(){
+
+sakthi();
+
+q1 = 0;
+
+int_1= setInterval(function(){
+
+$('#circle').css('left',count);
+
+count = count + 30;
+
+if (count >= 1300){
+
+clearInterval(int_1);
+
+count = 20;
+
+$('#circle').css('left',10);
+
+q1 = 1;
+
+prasath();
+
+}
+
+},100);
+
+},300);
+
+}
+
+  
+
+var q1 = 0;
+
+$('#circle').on('mouseover',function(){
+
+if(q1 == 0){
+
+sakthi();
+
+q1 = 1;
+
+}
+
+});
+
+$('#circle').on('mouseleave',function(){
+
+q1 = 0;
+
+prasath();
+
+});
+
+  
+
+$('#circle').on('click',function(){
+
+q1 = 0;
+
+prasath();
+
+mover();
+
+});
+
+</script>
+
+  
+
+  
+
+</body>
+
+  
+
+</html>
